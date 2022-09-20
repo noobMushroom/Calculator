@@ -26,15 +26,14 @@ const master = (number1, number2, operator) => {
         num2 = ""
         return sum;
     } else if (operator === "/") {
-        if (number2 === 0) {
-            sum = "Error you can't divide a number by zero"
-            return sum
-        } else {
-            sum = (number1 / number2).toFixed(2)
-            num1 = sum
+        if (number2 != 0) {
+            sum = Number((number1 / number2).toFixed(10))
+            num1 = Number(sum)
             num2 = ''
-            num1Display.innerHTML = sum
-            return sum
+            num1Display.textContent = Number(sum)
+            return Number(sum);
+        } else {
+            ans.textContent = "ERROR, can't divide a number by 0"
         }
     }
 }
@@ -49,9 +48,10 @@ const num1Display = document.getElementById('num1')
 const num2Display = document.getElementById('num2')
 const operatorDiv = document.getElementById('operatorDiv')
 const clearbtn = document.getElementById('clear')
-
+const backspace= document.getElementById('backspace')
 
 // *function numbers is important function it takes number and them to num 1 and num 2 and show them to display
+
 
 
 
@@ -61,18 +61,19 @@ function numbers() {
     numBtn.forEach(button => button.addEventListener('click', () => {
         if (some == '') {
             num1 += button.value
-            num1Display.innerHTML = num1
+            num1Display.innerHTML = num1 
 
         } else if (some == 'dee') {
             num2 += button.value
-            num2Display.innerHTML = num2
+            num2Display.innerHTML = num2 
         }
 
     }))
 }
 
+
 // *something returns operator and helps to switch between num1 and num2 
-// todo: change it's name
+// todo: change its name
 
 
 
@@ -81,6 +82,8 @@ let op = '' // *this is the operator
 
 function something() {
 
+    ans.textContent = ''
+    sum = ''
     opBtn.forEach(button => button.addEventListener('click', () => {
         operator()
         some = button.name
@@ -98,32 +101,40 @@ equal.addEventListener("click", () => {
     master(Number(num1), Number(num2), op)
     num2Display.textContent = ''
     operatorDiv.textContent = ''
-    num1Display.innerHTML = ''
-    ans.innerHTML = sum
+    num1Display.innerHTML = sum
+    // ans.innerHTML = sum
+    op=''
+
+    return sum = ''
 })
 
 
 numbers()
 
 
-
-// todo somehow take the sum and then pass it to the another function and every time i click operators i add to it 
-
-
 function operator() {
-    if (sum=='') {
+    if (sum == '') {
         master(Number(num1), Number(num2), op)
-        console.log("this is num2", num2, "and this is num1", num1)
-        // num2 = ''
         num2Display.textContent = ''
         operatorDiv.textContent = op
-        console.log("you called me")
-    }else {
+        op=''
+    } else {
         master(Number(sum), Number(num2), op)
-        console.log("this is num2", num2, "and this is num1", num1)
-        // num2 = ''
         num2Display.textContent = ''
         operatorDiv.textContent = op
-        console.log("you called me")
+        op=''
     }
 }
+
+
+clearbtn.addEventListener("click", ()=>{
+    num1='';
+    num2='';
+    sum= '';
+    some=''
+    num1Display.textContent=''
+    num2Display.textContent=''
+    ans.textContent=''
+    operatorDiv.textContent=''
+
+})
