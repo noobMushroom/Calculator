@@ -49,6 +49,7 @@ const num2Display = document.getElementById('num2')
 const operatorDiv = document.getElementById('operatorDiv')
 const clearbtn = document.getElementById('clear')
 const backspace = document.getElementById('backspace')
+const plusMinus = document.getElementById('plus_minus')
 
 // *function numbers is important function it takes number and them to num 1 and num 2 and show them to display
 
@@ -56,9 +57,10 @@ const backspace = document.getElementById('backspace')
 
 
 function numbers() {
-
     something()
+    ans.innerHTML=''
     numBtn.forEach(button => button.addEventListener('click', () => {
+        num1Display.removeAttribute('style')
         if (some == '') {
             num1 += button.value
             num1Display.innerHTML = num1
@@ -81,8 +83,6 @@ let some = ""
 let op = '' // *this is the operator 
 
 function something() {
-
-    ans.textContent = ''
     sum = ''
     opBtn.forEach(button => button.addEventListener('click', () => {
         operator()
@@ -102,7 +102,6 @@ equal.addEventListener("click", () => {
     num2Display.textContent = ''
     operatorDiv.textContent = ''
     num1Display.innerHTML = sum
-    // ans.innerHTML = sum
     op = ''
 
     return sum = ''
@@ -151,6 +150,17 @@ backspace.addEventListener('click', () => {
     } else if (some == 'dee') {
         num2 = num2.slice(0, -1)
         num2Display.textContent = num2;
+        return num2
+    }
+})
+plusMinus.addEventListener('click', () => {
+    if (some == '') {
+        num1 = `-${num1}`
+        num1Display.textContent = num1
+        return num1
+    }else if (some=='dee'){
+        num2 = `-${num2}`
+        num1Display.textContent = num1
         return num2
     }
 })
