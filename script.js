@@ -1,94 +1,108 @@
+// it's a master function which will take all the numbers and decide what to do with them 
+
+let sum=""
+let num1 = ''
+let num2 = ''
+
+
 const master = (number1, number2, operator) => {
-    // let number1=Number(prompt("enter  a number"))
-    // let operator= prompt('What do you want to do (+) (-) (*) (/)')
-    // let number2= Number(prompt('enter the second number'))
     if (operator === "+") {
-        sum(number1, number2)
+        sum= number1 + number2;
+        num1Display.textContent= sum;
+        num1= sum
+        hope2()
+        return sum;
+        
     } else if (operator === "-") {
-        subtract(number1 - number2);
+        sum= number1 - number2;
+        num1Display.textContent= sum;
+        num1= sum
+        hope2()
+        return sum;
     } else if (operator === "*") {
-        multiply(number1, number2);
+        sum= number1 * number2;
+        num1Display.textContent= sum;
+        num1= sum
+        hope2()
+        return sum;
     } else if (operator === "/") {
-        divide(number1, number2);
+        if (number2 === 0) {
+            sum="Error you can't divide a number by zero"
+            return  sum
+        } else {
+            sum = (number1/ number2).toFixed(2)
+            num1= sum
+            num1Display.innerHTML = sum
+            hope2()
+            return sum
+        }
     }
 }
-let num;
-const sum = (a, b) => {
-    console.log(a + b)
-    display.innerHTML=(a+b)
-    return num = a + b
-}
-
-const subtract = (a, b) => {
-    console.log(a - b)
-    display.innerHTML=(a-b)
-    return num = a - b
-}
+ 
 
 
-const multiply = (a, b) => {
-    console.log(a * b)
-    display.innerHTML=(a*b)
-    return num = a * b
-}
-
-const divide = (a, b) => {
-    if (b == 0) {
-        console.log("Error you can't divide a number by zero")
-        return "Error you can't divide a number by zero"
-    } else {
-        console.log(a / b)
-        display.innerHTML=(a/b)
-        return num = a / b
-    }
-} 
-
+// grabbing important buttons and display. 
 const numBtn = document.querySelectorAll('.number')
 const opBtn = document.querySelectorAll('.operator')
-const display = document.getElementById('display')
+const ans = document.getElementById('ans')
+const num1Display = document.getElementById('num1')
+const num2Display = document.getElementById('num2')
+const operatorDiv = document.getElementById('operatorDiv')
+const clearbtn = document.getElementById('clear')
 
-let n1 = ''
-let n2 = ''
-let number=''
 
-function num2() {
+// function numbers is important function it takes number and them to num 1 and num 2 and show them to display
+function numbers() {
+    something()
+    // hope();
     numBtn.forEach(button => button.addEventListener('click', () => {
-        if (something() == '') {
-            const num1Display= document.getElementById('num1')
-            n1 += button.value
-            num1Display.innerHTML=n1
-            console.log(`this is num 1:  ${n1}`)
-            
-        } else if (something() == 'dee') {
-            const num2Display= document.getElementById('num2')
-            n2 += button.value
-            num2Display.innerHTML=n2
-            console.log(`this is num 2:  ${n2}`)
+        if (some == '') {
+            num1 += button.value
+            num1Display.innerHTML = num1
+
+        } else if (some == 'dee') {
+            num2 += button.value
+            num2Display.innerHTML = num2
         }
 
     }))
 }
 
-
+// something returns operator and helps to switch between num1 and num2 
+// todo: change it's name
 let some = ""
 let op = ''
 function something() {
+
     opBtn.forEach(button => button.addEventListener('click', () => {
-        const operatorDiv= document.getElementById('operatorDiv')
         some = button.name
-        
         op = button.value
-        console.log(op)
-        operatorDiv.innerHTML=button.value
+        operatorDiv.innerHTML = button.value
     }))
-    return some 
+    return some
 }
 
 
+// and finally this calls innerHTML to master and calculate everything 
 
 const equal = document.getElementById('equal')
-equal.addEventListener("click", ()=> {
-    console.log("you clcked equal")
-    master(Number(n1), Number(n2), op)
+equal.addEventListener("click", () => {
+    master(Number(num1), Number(num2), op)
+    num2Display.textContent = ''
+    operatorDiv.textContent = ''
+    ans.innerHTML=sum
+    return num2 = ''
 })
-num2()
+
+function hope(){
+    
+    master(Number(num1), Number(num2), op)
+    
+    
+}
+
+function hope2(){
+    num2=''
+}
+
+numbers()
