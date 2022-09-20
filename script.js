@@ -23,7 +23,7 @@ const master = (number1, number2, operator) => {
         sum = number1 * number2;
         num1Display.textContent = sum;
         num1 = sum
-        num2=""
+        num2 = ""
         return sum;
     } else if (operator === "/") {
         if (number2 === 0) {
@@ -56,7 +56,7 @@ const clearbtn = document.getElementById('clear')
 
 
 function numbers() {
-    
+
     something()
     numBtn.forEach(button => button.addEventListener('click', () => {
         if (some == '') {
@@ -80,7 +80,7 @@ let some = ""
 let op = '' // *this is the operator 
 
 function something() {
-    
+
     opBtn.forEach(button => button.addEventListener('click', () => {
         operator()
         some = button.name
@@ -98,10 +98,8 @@ equal.addEventListener("click", () => {
     master(Number(num1), Number(num2), op)
     num2Display.textContent = ''
     operatorDiv.textContent = ''
-    num1Display.innerHTML=''
-    operatorDiv.innerHTML=''
+    num1Display.innerHTML = ''
     ans.innerHTML = sum
-    return num2 = ''
 })
 
 
@@ -113,14 +111,19 @@ numbers()
 
 
 function operator() {
-        master(Number(sum), Number(num2), op)
-        console.log("this is num2",num2 , "and this is num1" , num1)
+    if (sum=='') {
+        master(Number(num1), Number(num2), op)
+        console.log("this is num2", num2, "and this is num1", num1)
         // num2 = ''
         num2Display.textContent = ''
         operatorDiv.textContent = op
         console.log("you called me")
+    }else {
+        master(Number(sum), Number(num2), op)
+        console.log("this is num2", num2, "and this is num1", num1)
+        // num2 = ''
+        num2Display.textContent = ''
+        operatorDiv.textContent = op
+        console.log("you called me")
+    }
 }
-
-
-
-//! no2 will be somehow fix the sum
