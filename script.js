@@ -59,15 +59,9 @@ const plusMinus = document.getElementById('plus_minus')
 
 
 function numbers() {
-<<<<<<< HEAD
     switchNumbers()
     numBtn.forEach(button => button.addEventListener('click', () => {
         if (switched == '') {
-=======
-    something()
-    numBtn.forEach(button => button.addEventListener('click', () => {
-        if (some == '') {
->>>>>>> a5085ed (finished +/- bug and just have to do one more thing)
             num1 += button.value
             num1Display.innerHTML = num1
 
@@ -92,11 +86,7 @@ function switchNumbers() {
     opBtn.forEach(button => button.addEventListener('click', () => {
         operator()
         ans.textContent = ''
-<<<<<<< HEAD
         switched = button.name
-=======
-        some = button.name
->>>>>>> a5085ed (finished +/- bug and just have to do one more thing)
         op = button.value
         operatorDiv.innerHTML = button.value
     }))
@@ -164,30 +154,16 @@ backspace.addEventListener('click', () => {
     }
 })
 plusMinus.addEventListener('click', () => {
-<<<<<<< HEAD
     if (switched == '') {
-=======
-    if (some == '') {
->>>>>>> a5085ed (finished +/- bug and just have to do one more thing)
         num1 = num1 * -1
         num1Display.textContent = num1
         return num1
 
-<<<<<<< HEAD
     } else if (switched == 'switch') {
-=======
-    } else if (some == 'dee') {
->>>>>>> a5085ed (finished +/- bug and just have to do one more thing)
         num2 = num2 * -1
         num2Display.textContent = num2
         return num2
     }
-<<<<<<< HEAD
-=======
-
-
-})
->>>>>>> a5085ed (finished +/- bug and just have to do one more thing)
 
 
 })
