@@ -4,7 +4,6 @@ let sum = ""
 let num1 = ''
 let num2 = ''
 
-
 const master = (number1, number2, operator) => {
     if (operator === "+") {
         sum = number1 + number2;
@@ -53,19 +52,20 @@ const clearbtn = document.getElementById('clear')
 const backspace = document.getElementById('backspace')
 const plusMinus = document.getElementById('plus_minus')
 
+
 // *function numbers is important function it takes number and them to num 1 and num 2 and show them to display
 
 
 
 
 function numbers() {
-    something()
+    switchNumbers()
     numBtn.forEach(button => button.addEventListener('click', () => {
-        if (some == '') {
+        if (switched == '') {
             num1 += button.value
             num1Display.innerHTML = num1
 
-        } else if (some == 'dee') {
+        } else if (switched == 'switch') {
             num2 += button.value
             num2Display.innerHTML = num2
         }
@@ -74,24 +74,23 @@ function numbers() {
 }
 
 
-// *something returns operator and helps to switch between num1 and num2 
-// todo: change its name
 
 
 
-let some = ""
+// *switchNumbers returns operator and  switch between num1 and num2 
+let switched = ""
 let op = '' // *this is the operator 
 
-function something() {
+function switchNumbers() {
     sum = ''
     opBtn.forEach(button => button.addEventListener('click', () => {
         operator()
         ans.textContent = ''
-        some = button.name
+        switched = button.name
         op = button.value
         operatorDiv.innerHTML = button.value
     }))
-    return some
+    return switched
 }
 
 
@@ -133,7 +132,7 @@ clearbtn.addEventListener("click", () => {
     num1 = '';
     num2 = '';
     sum = '';
-    some = ''
+    switched = ''
     num1Display.textContent = ''
     num2Display.textContent = ''
     ans.textContent = ''
@@ -144,23 +143,23 @@ clearbtn.addEventListener("click", () => {
 
 
 backspace.addEventListener('click', () => {
-    if (some == '') {
+    if (switched == '') {
         num1 = num1.slice(0, -1)
         num1Display.textContent = num1
         return num1
-    } else if (some == 'dee') {
+    } else if (switched == 'switch') {
         num2 = num2.slice(0, -1)
         num2Display.textContent = num2;
         return num2
     }
 })
 plusMinus.addEventListener('click', () => {
-    if (some == '') {
+    if (switched == '') {
         num1 = num1 * -1
         num1Display.textContent = num1
         return num1
 
-    } else if (some == 'dee') {
+    } else if (switched == 'switch') {
         num2 = num2 * -1
         num2Display.textContent = num2
         return num2
@@ -168,4 +167,3 @@ plusMinus.addEventListener('click', () => {
 
 
 })
-
