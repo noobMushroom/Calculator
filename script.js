@@ -33,7 +33,9 @@ const master = (number1, number2, operator) => {
             num1Display.textContent = Number(sum)
             return Number(sum);
         } else {
-            ans.textContent = "ERROR, can't divide a number by 0"
+            ans.textContent = "ERROR"
+            // ans.textContent   = ''
+            num1Display = sum
         }
     }
 }
@@ -58,9 +60,7 @@ const plusMinus = document.getElementById('plus_minus')
 
 function numbers() {
     something()
-    ans.innerHTML=''
     numBtn.forEach(button => button.addEventListener('click', () => {
-        num1Display.removeAttribute('style')
         if (some == '') {
             num1 += button.value
             num1Display.innerHTML = num1
@@ -86,6 +86,7 @@ function something() {
     sum = ''
     opBtn.forEach(button => button.addEventListener('click', () => {
         operator()
+        ans.textContent = ''
         some = button.name
         op = button.value
         operatorDiv.innerHTML = button.value
@@ -103,7 +104,7 @@ equal.addEventListener("click", () => {
     operatorDiv.textContent = ''
     num1Display.innerHTML = sum
     op = ''
-
+    ans.textContent = ''
     return sum = ''
 })
 
@@ -155,13 +156,16 @@ backspace.addEventListener('click', () => {
 })
 plusMinus.addEventListener('click', () => {
     if (some == '') {
-        num1 = `-${num1}`
+        num1 = num1 * -1
         num1Display.textContent = num1
         return num1
-    }else if (some=='dee'){
-        num2 = `-${num2}`
-        num1Display.textContent = num1
+
+    } else if (some == 'dee') {
+        num2 = num2 * -1
+        num2Display.textContent = num2
         return num2
     }
+
+
 })
 
